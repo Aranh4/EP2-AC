@@ -48,3 +48,14 @@ def lista_movimentos_possiveis(baralho,i):
         return movimentos
     elif i>4:
         return movimentos
+
+
+###empilha carta
+def empilha(baralho,inicio,destino):
+    novo = []
+    for carta in baralho:
+        novo.append(carta)
+    cartadeslocada = novo[inicio]
+    novo[destino] = cartadeslocada
+    novo.pop(inicio)
+    return novo
