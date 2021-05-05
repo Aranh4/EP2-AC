@@ -58,4 +58,11 @@ def empilha(baralho,inicio,destino):
     cartadeslocada = novo[inicio]
     novo[destino] = cartadeslocada
     novo.pop(inicio)
-    return novo
+        return novo
+
+###POSSUIMOVIMENTOSPOSSIVEIS.PY
+def possui_movimentos_possiveis(baralho):
+    for i in range(len(baralho)-1):
+        if lista_movimentos_possiveis(baralho,i) != []:
+            return True
+    return False
