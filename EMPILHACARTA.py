@@ -6,4 +6,4 @@ def empilha(baralho,inicio,destino):
     cartadeslocada = novo[inicio]
     novo[destino] = cartadeslocada
     novo.pop(inicio)
-        return novo
+    return novo

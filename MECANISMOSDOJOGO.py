@@ -58,7 +58,7 @@ def empilha(baralho,inicio,destino):
     cartadeslocada = novo[inicio]
     novo[destino] = cartadeslocada
     novo.pop(inicio)
-        return novo
+    return novo
 
 ###POSSUIMOVIMENTOSPOSSIVEIS.PY
 def possui_movimentos_possiveis(baralho):
