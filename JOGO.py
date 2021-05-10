@@ -50,7 +50,7 @@ if possui_movimentos_possiveis(baralho):
             print('1.{}'.format(baralho[indexcarta-1]))
             print('2.{}'.format(baralho[indexcarta-3]))
             destino = int(input('Sobre qual carta você que empilhar o {} (1 ou 2)'.format(baralho[indexcarta])))
-            if destino != 1 or destino != 2:
+            if destino != 1 and destino != 2:
                 print('Numero Inválido, escolha novamente.')
             elif destino == 1:
                 empilha(baralho,indexcarta, indexcarta-1)
@@ -60,8 +60,6 @@ if possui_movimentos_possiveis(baralho):
             empilha(baralho,indexcarta, indexcarta-1)
         elif movpos == [3]:
             empilha(baralho,indexcarta,indexcarta-3)
-        indexcarta - movpos[0]
-        indexcarta-movpos[1] 
     else:
         print('A carta {} não possui movimentos possiveis, selecione outra carta:'.format(baralho[numeroescolhido-1]))
 
