@@ -1,16 +1,5 @@
-def extrai_naipe(carta):
-    if carta[1] == '0':
-        return carta[2]
-    if carta[1] == '♦' or '♥' or '♣' or '♠' :
-        return carta[1]
-    
-
-def extrai_valor(carta):
-    if carta[1]=='0':
-        return carta[0] + carta[1]
-    if carta[1] != '♦' or '♥' or '♣' or '♠':
-        return carta[0]
-
+import ExtraiNaipe
+import EXTRAIVALOR
 
 def lista_movimentos_possiveis(baralho,i):
     movimentos = []

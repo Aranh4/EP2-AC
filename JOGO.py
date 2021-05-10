@@ -1,5 +1,7 @@
 from MECANISMOSDOJOGO import *
+
 #TELA INICIAL
+
 print(' ')
 print('Paciência Acordeão')
 print('==================')
