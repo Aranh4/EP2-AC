@@ -91,6 +91,6 @@ while jogar == "S":
             else:
                 print("Não existem mais movimentos possíveis, VOCÊ PERDEU! ")
             break
-    #PERGUNTANDO SE GOSTARIA DE JOGAR NOVAMENTE
+    #PERGUNTANDO SE GOSTARIA DE JOGAR DE NOVO
     jogar = str(input("Deseja jogar novamente? [S/N]: "))
 print("Obrigado por jogar!")
