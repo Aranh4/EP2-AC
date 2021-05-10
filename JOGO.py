@@ -30,16 +30,16 @@ while jogar == "S":
     print('O estado atual do baralho é:')
     baralho = cria_baralho()
 
+    #PRINTANDO O BARALHO
     while True:
         j = 1
         for carta in baralho:
             print('{0}. {1}'.format(j, carta))
             j += 1
         print(' ')
-
-        #PERGUNTANDO QUAL CARTA QUER MEXER
-
+        #VERIFICANDO SE POSSUI MOVIMENTOS POSSIVEIS
         if possui_movimentos_possiveis(baralho):
+             #PERGUNTANDO QUAL CARTA GOSTARIA DE MEXER
             while True:
                 numerovalido = False
                 while not numerovalido:
@@ -49,37 +49,48 @@ while jogar == "S":
                     else:
                         numerovalido = True
                 indexcarta = numeroescolhido-1
+                #VERIFICANDO SE HA MOVIMENTOS POSSIVEIS NAQUELA CARTA
                 movpos = lista_movimentos_possiveis(baralho,indexcarta)
                 if 1 in movpos or 3 in movpos:
                     if movpos == [1,3]:
                         print('Há dois movimentos possíveis: ')
                         print('1.{}'.format(baralho[indexcarta-1]))
                         print('2.{}'.format(baralho[indexcarta-3]))
+                        #ESCOLHENDO AONDE GOSTARIA DE EMPILHAR A CARTA
                         while True:
                             destino = int(input('Sobre qual carta você que empilhar o {} (1 ou 2): '.format(baralho[indexcarta])))
                             if destino != 1 and destino != 2:
                                 print('Numero Inválido, escolha novamente.')
                                 pass
+                            #EMPILHANDO A CARTA  COM 2 DESTINOS AONDE GOSTARIA 
                             elif destino == 1:
+                                print('Empilhando {} em {}'.format(baralho[indexcarta], baralho[indexcarta-1]))
                                 baralho = empilha(baralho,indexcarta, indexcarta-1)
                                 break
                             elif destino == 2:
+                                print('Empilhando {} em {}'.format(baralho[indexcarta], baralho[indexcarta-3]))
                                 baralho = empilha(baralho,indexcarta,indexcarta-3)
                                 break
+                    #EMPILHANDO A CARTA COM APENAS 1 DESTINO        
                     elif movpos == [1]:
+                        print('Empilhando {} em {}'.format(baralho[indexcarta], baralho[indexcarta-1]))
                         baralho = empilha(baralho,indexcarta, indexcarta-1)
                     elif movpos == [3]:
+                        print('Empilhando {} em {}'.format(baralho[indexcarta], baralho[indexcarta-3]))
                         baralho = empilha(baralho,indexcarta,indexcarta-3)
                     break
+                #CONSIDERANDO QUANDO NÃO HÁ MOVIMENTOS POSSIVEIS
                 else:
                     print('A carta {} não possui movimentos possiveis, selecione outra carta!'.format(baralho[numeroescolhido-1]))
                     pass
             pass
+        #MOSTRANDO SE GANHOU OU NÃO
         else:
             if len(baralho)==1:
                 print("Parabéns! Você Ganhou!")
             else:
                 print("Não existem mais movimentos possíveis, VOCÊ PERDEU! ")
             break
+    #PERGUNTANDO SE GOSTARIA DE JOGAR NOVAMENTE
     jogar = str(input("Deseja jogar novamente? [S/N]: "))
 print("Obrigado por jogar!")
