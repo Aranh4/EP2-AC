@@ -26,19 +26,30 @@ print(' ')
 #MOSTRANDO O BARALHO
 print('O estado atual do baralho é:')
 baralho = cria_baralho()
-j = 1
-for carta in baralho:
-    print('{0}. {1}'.format(j, carta))
-    j += 1
-print(' ')
 
-#PERGUNTANDO QUAL CARTA QUER MEXER
-numerovalido = False
-while not numerovalido:
-    numeroescolhido = int(input('Escolha uma carta (digite um número entre 1 e {}): '.format(len(baralho)))) 
-    if numeroescolhido > 52 or numeroescolhido < 1:
-        print('Número inválido, escolha outro válido (entre 1 a {}): '.format(len(baralho)))
-    else:
-        numerovalido = True
+while True:
+    j = 1
+    for carta in baralho:
+        print('{0}. {1}'.format(j, carta))
+        j += 1
+    print(' ')
 
+    #PERGUNTANDO QUAL CARTA QUER MEXER
 
+    if possui_movimentos_possiveis(baralho):
+        while True:
+            numerovalido = False
+            while not numerovalido:
+                numeroescolhido = int(input('Escolha uma carta (digite um número entre 1 e {}): '.format(len(baralho)))) 
+                if numeroescolhido > len(baralho) or numeroescolhido < 1:
+                    print('Número inválido, escolha outro válido (entre 1 a {}): '.format(len(baralho)))
+                else:
+                    numerovalido = True
+            indexcarta = numeroescolhido-1
+            #VERIFICANDO MOVIMENTOS POSSIVEIS
+            movpos = lista_movimentos_possiveis(baralho,indexcarta)
+            if 1 in movpos or 3 in movpos:
+                if movpos == [1,3]:
+                    print('Há dois movimentos possíveis: ')
+                    print('1.{}'.format(baralho[indexcarta-1]))
+                    print('2.{}'.format(baralho[indexcarta-3]))
