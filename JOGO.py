@@ -1,5 +1,7 @@
 from MECANISMOSDOJOGO import *
+
 #TELA INICIAL
+
 print(' ')
 print('Paciência Acordeão')
 print('==================')
@@ -39,5 +41,4 @@ while not numerovalido:
     else:
         numerovalido = True
 
-indexbaralho = numeroescolhido-1
 
