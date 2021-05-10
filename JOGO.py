@@ -83,4 +83,3 @@ while jogar == "S":
             break
     jogar = str(input("Deseja jogar novamente? [S/N]: "))
 print("Obrigado por jogar!")
-
