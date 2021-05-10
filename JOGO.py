@@ -33,9 +33,9 @@ print(' ')
 #PERGUNTANDO QUAL CARTA QUER MEXER
 numerovalido = False
 while not numerovalido:
-    numeroescolhido = int(input('Escolha uma carta (digite um número entre 1 e 52): ')) #TEM QUE MUDAR ISSO AQUI, COLOCAR NUM WHILE PARA MUDAR O NUMERO LIMITE (NESSE CASO 52)
+    numeroescolhido = int(input('Escolha uma carta (digite um número entre 1 e {}): '.format(len(baralho)))) 
     if numeroescolhido > 52 or numeroescolhido < 1:
-        print('Número inválido, escolha outro válido (entre 1 a 52): ') #AQUI TAMBÉM!
+        print('Número inválido, escolha outro válido (entre 1 a {}): '.format(len(baralho)))
     else:
         numerovalido = True
 
