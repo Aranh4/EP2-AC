@@ -71,4 +71,4 @@ def cor(baralho):
         if "♦" in baralho[i]:
             print("{0}. \033[31m{1}\033[0;0m ".format(i+1,baralho[i]))
         i+=1
-    return ""
+    return baralho
