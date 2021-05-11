@@ -27,67 +27,83 @@ print(' ')
 jogar = "S"
 #CRIANDO O BARALHO
 while jogar == "S":
+    print('===========================')
     print('O estado atual do baralho é:')
+    print('===========================')
+    print('')
     baralho = cria_baralho()
-    baralhocolorido = cor(baralho)
-
     #PRINTANDO O BARALHO
     while True:
         j = 1
-        for carta in baralhocolorido:
-            print('{0}. {1}'.format(j, carta))
+        for carta in baralho:
+            if "♣" in carta:
+                print("{}. \033[30m{}\033[0;0m ".format(j,carta))
+            if "♠" in carta:
+                print("{}. \033[30m{}\033[0;0m ".format(j,carta))
+            if "♥" in carta:
+                print("{}. \033[31m{}\033[0;0m ".format(j,carta))
+            if "♦" in carta:
+                print("{}. \033[31m{}\033[0;0m ".format(j,carta))
             j += 1
         print(' ')
         #VERIFICANDO SE POSSUI MOVIMENTOS POSSIVEIS
-        if possui_movimentos_possiveis(baralhocolorido):
+        if possui_movimentos_possiveis(baralho):
              #PERGUNTANDO QUAL CARTA GOSTARIA DE MEXER
             while True:
                 numerovalido = False
                 while not numerovalido:
-                    numeroescolhido = int(input('Escolha uma carta (digite um número entre 1 e {}): '.format(len(baralhocolorido)))) 
-                    if numeroescolhido > len(baralhocolorido) or numeroescolhido < 1:
-                        print('Número inválido, escolha outro válido (entre 1 a {}): '.format(len(baralhocolorido)))
+                    numeroescolhido = int(input('Escolha uma carta (digite um número entre 1 e {}): '.format(len(baralho)))) 
+                    if numeroescolhido > len(baralho) or numeroescolhido < 1:
+                        print('Número inválido, escolha outro válido (entre 1 a {}): '.format(len(baralho)))
+                        print('')
                     else:
                         numerovalido = True
                 indexcarta = numeroescolhido-1
                 #VERIFICANDO SE HA MOVIMENTOS POSSIVEIS NAQUELA CARTA
-                movpos = lista_movimentos_possiveis(baralhocolorido,indexcarta)
+                movpos = lista_movimentos_possiveis(baralho,indexcarta)
                 if 1 in movpos or 3 in movpos:
                     if movpos == [1,3]:
                         print('Há dois movimentos possíveis: ')
-                        print('1.{}'.format(baralhocolorido[indexcarta-1]))
-                        print('2.{}'.format(baralhocolorido[indexcarta-3]))
+                        print('1.{}'.format(baralho[indexcarta-1]))
+                        print('2.{}'.format(baralho[indexcarta-3]))
+                        print('')
                         #ESCOLHENDO AONDE GOSTARIA DE EMPILHAR A CARTA
                         while True:
-                            destino = int(input('Sobre qual carta você que empilhar o {} (1 ou 2): '.format(baralhocolorido[indexcarta])))
+                            destino = int(input('Sobre qual carta você que empilhar o {} (1 ou 2): '.format(baralho[indexcarta])))
                             if destino != 1 and destino != 2:
                                 print('Numero Inválido, escolha novamente.')
+                                print('')
                                 pass
                             #EMPILHANDO A CARTA  COM 2 DESTINOS AONDE GOSTARIA 
                             elif destino == 1:
-                                print('Empilhando {} em {}'.format(baralhocolorido[indexcarta], baralhocolorido[indexcarta-1]))
-                                baralhocolorido = empilha(baralhocolorido,indexcarta, indexcarta-1)
+                                print('Empilhando {} em {}'.format(baralho[indexcarta], baralho[indexcarta-1]))
+                                print('')
+                                baralho = empilha(baralho,indexcarta, indexcarta-1)
                                 break
                             elif destino == 2:
-                                print('Empilhando {} em {}'.format(baralhocolorido[indexcarta], baralhocolorido[indexcarta-3]))
-                                baralhocolorido = empilha(baralhocolorido,indexcarta,indexcarta-3)
+                                print('Empilhando {} em {}'.format(baralho[indexcarta], baralho[indexcarta-3]))
+                                print('')
+                                baralho = empilha(baralho,indexcarta,indexcarta-3)
                                 break
                     #EMPILHANDO A CARTA COM APENAS 1 DESTINO        
                     elif movpos == [1]:
-                        print('Empilhando {} em {}'.format(baralhocolorido[indexcarta], baralhocolorido[indexcarta-1]))
-                        baralhocolorido = empilha(baralhocolorido,indexcarta, indexcarta-1)
+                        print('Empilhando {} em {}'.format(baralho[indexcarta], baralho[indexcarta-1]))
+                        print('')
+                        baralho = empilha(baralho,indexcarta, indexcarta-1)
                     elif movpos == [3]:
-                        print('Empilhando {} em {}'.format(baralhocolorido[indexcarta], baralhocolorido[indexcarta-3]))
-                        baralhocolorido = empilha(baralhocolorido,indexcarta,indexcarta-3)
+                        print('Empilhando {} em {}'.format(baralho[indexcarta], baralho[indexcarta-3]))
+                        print('')
+                        baralho = empilha(baralho,indexcarta,indexcarta-3)
                     break
                 #CONSIDERANDO QUANDO NÃO HÁ MOVIMENTOS POSSIVEIS
                 else:
-                    print('A carta {} não possui movimentos possiveis, selecione outra carta!'.format(baralhocolorido[numeroescolhido-1]))
+                    print('A carta {} não possui movimentos possiveis, selecione outra carta!'.format(baralho[numeroescolhido-1]))
+                    print('')
                     pass
             pass
         #MOSTRANDO SE GANHOU OU NÃO
         else:
-            if len(baralhocolorido)==1:
+            if len(baralho)==1:
                 print("======================")
                 print('')
                 print('Parabéns! Você Ganhou!')
@@ -103,7 +119,17 @@ while jogar == "S":
             break
     #PERGUNTANDO SE GOSTARIA DE JOGAR DE NOVO
     print('')
-    jogar = str(input("Deseja jogar novamente? ESCREVA ESTRITAMENTE 'S' PARA 'SIM' OU 'N' PARA 'NÃO' [S/N]: "))
+    continuar = True
+    while continuar:
+        jogar = str(input("Deseja jogar novamente? ESCREVA ESTRITAMENTE 'S' PARA 'SIM' OU 'N' PARA 'NÃO' [S/N]: "))
+        if jogar != 'S' or jogar != 'N':
+            print('Insira uma opção válida. [S/N]')
+            print('')
+            continuar = True
+        if jogar == 'S':
+            continuar = False
+        if jogar == 'N':
+            continuar = False
     print('')
     print('=========================================================================================')
 print("Obrigado por jogar!")
