@@ -29,6 +29,7 @@ jogar = "S"
 while jogar == "S":
     print('O estado atual do baralho é:')
     baralho = cria_baralho()
+    baralho = cor(baralho)
 
     #PRINTANDO O BARALHO
     while True:
@@ -87,10 +88,25 @@ while jogar == "S":
         #MOSTRANDO SE GANHOU OU NÃO
         else:
             if len(baralho)==1:
-                print("Parabéns! Você Ganhou!")
+                print("======================")
+                print('')
+                print('Parabéns! Você Ganhou!')
+                print("")
+                print('======================')
             else:
-                print("Não existem mais movimentos possíveis, VOCÊ PERDEU! ")
+                print("======================================")
+                print('')
+                print("Não existem mais movimentos possíveis")
+                print('           VOCÊ PERDEU! ')
+                print('')
+                print('=======================================')
             break
     #PERGUNTANDO SE GOSTARIA DE JOGAR DE NOVO
-    jogar = str(input("Deseja jogar novamente? ESCREVE ESTRITAMENTE 'S' PARA 'SIM' OU 'N' PARA 'NÃO' [S/N]: "))
+    print('')
+    jogar = str(input("Deseja jogar novamente? ESCREVA ESTRITAMENTE 'S' PARA 'SIM' OU 'N' PARA 'NÃO' [S/N]: "))
+    print('')
+    print('=========================================================================================')
 print("Obrigado por jogar!")
+print('Feito por: Arthur Fonseca e Caio Tieri')
+print('1° Semestre - Turma A - Insper - 2021')
+print('========================================')

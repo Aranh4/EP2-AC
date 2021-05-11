@@ -27,9 +27,6 @@ def extrai_naipe(carta):
         return carta[1]
 
 
-
-print (extrai_valor('A0'))
-
 ##### movimentospossiveis.py
 
 def lista_movimentos_possiveis(baralho,i):
@@ -60,3 +57,18 @@ def possui_movimentos_possiveis(baralho):
         if lista_movimentos_possiveis(baralho,i) != []:
             return True
     return False
+
+###ADICIONANDO CORES
+def cor(baralho):
+    i = 0
+    while i < len(baralho):
+        if "♣" in baralho[i]:
+            print("{0}. \033[30m{1}\033[0;0m ".format(i+1,baralho[i]))
+        if "♠" in baralho[i]:
+            print("{0}. \033[30m{1}\033[0;0m ".format(i+1,baralho[i]))
+        if "♥" in baralho[i]:
+            print("{0}. \033[31m{1}\033[0;0m ".format(i+1,baralho[i]))
+        if "♦" in baralho[i]:
+            print("{0}. \033[31m{1}\033[0;0m ".format(i+1,baralho[i]))
+        i+=1
+    return ""
