@@ -48,13 +48,13 @@ while jogar == "S":
         print(' ')
         #VERIFICANDO SE POSSUI MOVIMENTOS POSSIVEIS
         if possui_movimentos_possiveis(baralho):
-             #PERGUNTANDO QUAL CARTA GOSTARIA DE MEXER
+            #PERGUNTANDO QUAL CARTA GOSTARIA DE MEXER
             while True:
                 numerovalido = False
                 while not numerovalido:
                     numeroescolhido = int(input('Escolha uma carta (digite um número entre 1 e {}): '.format(len(baralho))))
                     if numeroescolhido > len(baralho) or numeroescolhido < 1:
-                        print('Número inválido, escolha outro válido. (Entre 1 a {}): '.format(len(baralho)))
+                        print('Número inválido, escolha outro válido (entre 1 a {}): '.format(len(baralho)))
                         print('')
                     else:
                         numerovalido = True
@@ -103,7 +103,24 @@ while jogar == "S":
             pass
         #MOSTRANDO SE GANHOU OU NÃO
         else:
-            if len(baralho)==1:
+            if len(baralho)==2 and extrai_naipe(baralho[0]) == extrai_naipe(baralho[1]):
+                baralho = empilha(baralho, indexcarta, indexcarta-1)
+                print(baralho)
+                print("======================")
+                print('')
+                print('Parabéns! Você Ganhou!')
+                print("")
+                print('======================')
+            elif len(baralho)==2 and extrai_valor(baralho[0]) == extrai_valor(baralho[1]):
+                baralho = empilha(baralho, indexcarta, indexcarta-1)
+                print(baralho)
+                print("======================")
+                print('')
+                print('Parabéns! Você Ganhou!')
+                print("")
+                print('======================')
+            elif len(baralho)==1:
+                print(baralho)
                 print("======================")
                 print('')
                 print('Parabéns! Você Ganhou!')
