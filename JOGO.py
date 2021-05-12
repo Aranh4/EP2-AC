@@ -52,20 +52,12 @@ while jogar == "S":
             while True:
                 numerovalido = False
                 while not numerovalido:
-                    numeroescolhido = input('Escolha uma carta (digite um número entre 1 e {}): '.format(len(baralho)))
-                    numeroescolhidoint = numeroescolhido.isnumeric()
-                    if numeroescolhidoint == True:
-                        numeroescolhido = int(numeroescolhidoint)
-                        if numeroescolhido > len(baralho) or numeroescolhido < 1:
-                            print('Número inválido, escolha outro válido. (Entre 1 a {}): '.format(len(baralho)))
-                            print('')
-                        else:
-                            numerovalido = True
+                    numeroescolhido = int(input('Escolha uma carta (digite um número entre 1 e {}): '.format(len(baralho))))
+                    if numeroescolhido > len(baralho) or numeroescolhido < 1:
+                        print('Número inválido, escolha outro válido. (Entre 1 a {}): '.format(len(baralho)))
+                        print('')
                     else:
-                        print('')
-                        print('Opção inválida, digite um número. (Entre 1 a {}): '.format(len(baralho)))
-                        print('')
-                        numerovalido = False
+                        numerovalido = True
                 indexcarta = numeroescolhido-1
                 #VERIFICANDO SE HA MOVIMENTOS POSSIVEIS NAQUELA CARTA
                 movpos = lista_movimentos_possiveis(baralho,indexcarta)
